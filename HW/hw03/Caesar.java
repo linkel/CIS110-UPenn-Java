@@ -2,12 +2,10 @@ import java.util.Arrays;
 
 public class Caesar {
     public static void main(String[] args) {
-        String myString = "CONSUL";
-        System.out.println(Arrays.toString(stringToSymbolArray(myString)));
-        String back = symbolArrayToString(stringToSymbolArray(myString));
-        System.out.println(back);
-        System.out.println(unshift(1,10));
-        System.out.println(shift(25,2));
+        String message = "I AM CONSTANT AS THE NORTHERN STAR";
+        String cipher = encrypt(message, 4);
+        String decrypted = decrypt(cipher, 4);
+        System.out.println(decrypted);
     }
     /*
     * Description: converts a string to a symbol array,
@@ -58,5 +56,26 @@ public class Caesar {
             res = res % 26;
         }
         return res;
+    }
+    public static String encrypt(String message, int key) {
+        int[] messageArray = stringToSymbolArray(message);
+        int[] encryptedArray = new int[messageArray.length];
+        String encrypted = "";
+        for (int i=0; i<messageArray.length;i++) {
+            encryptedArray[i] = shift(messageArray[i],key);
+        }
+        encrypted = symbolArrayToString(encryptedArray);
+        return encrypted;
+    }
+
+    public static String decrypt(String message, int key) {
+        int[] messageArray = stringToSymbolArray(message);
+        int[] decryptedArray = new int[messageArray.length];
+        String decrypted = "";
+        for (int i=0; i<messageArray.length; i++){
+            decryptedArray[i] = unshift(messageArray[i],key); 
+        }
+        decrypted = symbolArrayToString(decryptedArray);
+        return decrypted;
     }
 }
