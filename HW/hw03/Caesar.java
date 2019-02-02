@@ -2,10 +2,27 @@ import java.util.Arrays;
 
 public class Caesar {
     public static void main(String[] args) {
-        String message = "I AM CONSTANT AS THE NORTHERN STAR";
-        String cipher = encrypt(message, 4);
-        String decrypted = decrypt(cipher, 4);
-        System.out.println(decrypted);
+
+        if (args.length != 3) {
+            System.err.println("Usage:  java Caesar <action> <filename> <key>");
+            System.exit(1);
+        }
+        String action = args[0];
+        String filename = args[1];
+        int key = args[2].charAt(0);
+        key = key % 26;
+        System.out.println(key);
+        In inStream = new In(filename);
+        String message = inStream.readAll();
+
+        if (action.equals("encrypt")) {
+            System.out.println(encrypt(message, key));
+        } else if (action.equals("decrypt")) {
+            System.out.println(decrypt(message, key));
+        } else {
+            System.err.println("Enter encrypt or decrypt for the action.");
+            System.exit(1);
+        }
     }
     /*
     * Description: converts a string to a symbol array,
