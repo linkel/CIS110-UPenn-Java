@@ -10,15 +10,22 @@ public class Caesar {
         String action = args[0];
         String filename = args[1];
         int key = args[2].charAt(0);
-        key = key % 26;
+        key = key - 'A'; // why did I have this as key % 26? NO WONDER it was so weird.
         System.out.println(key);
         In inStream = new In(filename);
         String message = inStream.readAll();
 
         if (action.equals("encrypt")) {
+            System.out.println(message);
             System.out.println(encrypt(message, key));
+            int[] encrypted = stringToSymbolArray(encrypt(message,key));
+            System.out.println(Arrays.toString(encrypted));
+            System.out.println(Arrays.toString(findFrequencies(encrypted)));
         } else if (action.equals("decrypt")) {
             System.out.println(decrypt(message, key));
+        } else if (action.equals("frequencies")) {
+            System.out.println(getDictionaryFrequencies("english.txt"));
+            System.out.println(Arrays.toString(getDictionaryFrequencies("english.txt")));
         } else {
             System.err.println("Enter encrypt or decrypt for the action.");
             System.exit(1);
@@ -94,5 +101,26 @@ public class Caesar {
         }
         decrypted = symbolArrayToString(decryptedArray);
         return decrypted;
+    }
+
+    public static double[] getDictionaryFrequencies(String filename) {
+        In file = new In(filename);
+        double[] frequencies = new double[26];
+        for (int i=0;i<26;i++) {
+        frequencies[i] = Double.parseDouble(file.readLine());
+        }
+        return frequencies;
+    }
+    public static double[] findFrequencies(int[] symbol_array) {
+        double[] frequencies = new double[26];
+        for (int i=0; i<symbol_array.length; i++) {
+            if (symbol_array[i] < 26 && symbol_array[i] >= 0) {
+                frequencies[symbol_array[i]] += 1;
+            }
+        }
+        for (int i=0; i<frequencies.length; i++) {
+            frequencies[i] = frequencies[i] / symbol_array.length;
+        }
+        return frequencies;
     }
 }
