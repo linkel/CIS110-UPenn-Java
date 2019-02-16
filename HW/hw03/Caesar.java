@@ -11,21 +11,19 @@ public class Caesar {
         String filename = args[1];
         int key = args[2].charAt(0);
         key = key - 'A'; // why did I have this as key % 26? NO WONDER it was so weird.
-        System.out.println(key);
+        //System.out.println(key);
         In inStream = new In(filename);
         String message = inStream.readAll();
 
         if (action.equals("encrypt")) {
-            System.out.println(message);
-            System.out.println(encrypt(message, key));
-            int[] encrypted = stringToSymbolArray(encrypt(message,key));
-            System.out.println(Arrays.toString(encrypted));
-            System.out.println(Arrays.toString(findFrequencies(encrypted)));
+            System.out.println(encrypt(message,key));
         } else if (action.equals("decrypt")) {
             System.out.println(decrypt(message, key));
         } else if (action.equals("frequencies")) {
             System.out.println(getDictionaryFrequencies("english.txt"));
             System.out.println(Arrays.toString(getDictionaryFrequencies("english.txt")));
+        } else if (action.equals("crack")) {
+            System.out.println(crack(message));
         } else {
             System.err.println("Enter encrypt or decrypt for the action.");
             System.exit(1);
@@ -63,7 +61,10 @@ public class Caesar {
         }
         return resultString;
     }
-
+    /*
+    * Description: shifts an integer representation of a letter forwards by the offset provided
+    *
+    */
     public static int shift(int symbol, int offset) {
         int res = symbol;
         if (symbol >= 0 && symbol <= 25) {
@@ -72,7 +73,10 @@ public class Caesar {
         }
         return res;
     }
-
+    /*
+    * Description: shifts an integer representation of a letter backwards by the offset provided
+    *
+    */
     public static int unshift(int symbol, int offset) {
         int res = symbol;
         if (symbol >= 0 && symbol <= 25) {
@@ -122,5 +126,31 @@ public class Caesar {
             frequencies[i] = frequencies[i] / symbol_array.length;
         }
         return frequencies;
+    }
+    public static double scoreFrequencies(double[] freqs, double[] englishFreqs) {
+        double[] score = new double[26];
+        for (int i=0; i<score.length; i++) {
+            score[i] = Math.abs(freqs[i] - englishFreqs[i]);
+        }
+        double final_score = 0;
+        for (int i=0; i<score.length; i++) {
+            final_score += score[i];
+        }
+        return final_score;
+    }
+
+    public static String crack(String original) {
+        double lowest_score = Double.POSITIVE_INFINITY;
+        int key = 0;
+        for (int i=0; i < 26; i++) {
+            String decoded_string = decrypt(original, i);
+            int[] decoded_array = stringToSymbolArray(decoded_string);
+            double score = scoreFrequencies(findFrequencies(decoded_array), getDictionaryFrequencies("english.txt"));
+            if (score < lowest_score) {
+                lowest_score = score;
+                key = i;
+            }
+        }
+        return decrypt(original, key);
     }
 }
