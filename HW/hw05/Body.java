@@ -23,7 +23,12 @@ public class Body {
      */
     public Body(double mass, double posX, double posY, 
                 double velX, double velY, String imageFile) {
-        //TODO: Implement this constructor
+        px = posX;
+        py = posY;
+        vx = velX;
+        vy = velY;
+        m = mass;
+        img = imageFile;
     }
     
     /**
@@ -43,7 +48,7 @@ public class Body {
      */
     public double distanceToX(Body other) {
         //TODO: Implement this method
-        return 0.0;
+        return other.px - this.px;
     }
     
     
@@ -53,7 +58,7 @@ public class Body {
      */
     public double distanceToY(Body other) {
         //TODO: Implement this method
-        return 0.0;
+        return other.py - this.py;
     }
     
     /**
@@ -62,8 +67,10 @@ public class Body {
      * Inputs: other - the argument body.
      */
     public double distanceTo(Body other) {
-        //TODO: Implement this method
-        return 0.0; 
+        //TODO: Implement this method  
+        double deltaX = other.px - this.px;
+        double deltaY = other.py - this.py;
+        return Math.sqrt(deltaX*deltaX + deltaY*deltaY);
     }
     /**
      * Returns the netForce (as a combination of x and y) between the calling body 
@@ -72,7 +79,8 @@ public class Body {
      */
     public double force(Body other) {
         //TODO: Implement this method
-        return 0.0;
+        double d = distanceTo(other);
+        return (G*this.m*other.m)/(d*d);
     }
     
     /**
@@ -81,7 +89,7 @@ public class Body {
      */
     public double forceX(Body other) {
         //TODO: Implement this method
-        return 0.0;
+        return force(other)*distanceToX(other)/distanceTo(other);
     }
     
     /**
@@ -90,7 +98,7 @@ public class Body {
      */
     public double forceY(Body other) {
         //TODO: Implement this method
-        return 0.0;
+        return force(other)*distanceToY(other)/distanceTo(other);
     }
 
     
