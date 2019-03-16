@@ -1,5 +1,8 @@
 public class Space {
-    
+    public static void main(String[] args) {
+        Space s = new Space("solarSystem.txt");
+        s.draw();
+    }
     /**
      * DO NOT EDIT ANY CODE BELOW THIS LINE
      * 
@@ -26,6 +29,22 @@ public class Space {
         // 2) Set the radius of space, as well as the PennDraw x and y scales
         // 3) Read the input file, creating one body instance for each line and
         //    insert the body into the bodies array
+        In inStream = new In(filename);
+        int numParticles = inStream.readInt();
+        double radius = inStream.readDouble();
+        this.bodies = new Body[numParticles];
+        this.radius = radius;
+        PennDraw.setXscale(-radius, radius);
+        PennDraw.setYscale(-radius, radius);
+        for (int i = 0; i < numParticles; i++) {
+            double m  = inStream.readDouble();
+            double px = inStream.readDouble();
+            double py = inStream.readDouble();
+            double vx = inStream.readDouble();
+            double vy = inStream.readDouble();
+            String img = inStream.readString();
+            bodies[i] = new Body(m,px,py,vx,vy,img);
+        }
     }
     
     /**
@@ -48,7 +67,10 @@ public class Space {
      * Draw the starfield background, then draw all bodies at their current position.
      */
     public void draw() {
-        
+        PennDraw.picture(0.0,0.0,"starfield.jpg");
+        for (int i = 0; i < bodies.length; i++) {
+            bodies[i].draw();
+        }
     }
     
     /**
@@ -57,8 +79,15 @@ public class Space {
      * Second, this method updates every body's position.
      */
     public void simulate(double timeStep) {
-        
+        for (int i = 0; i < bodies.length; i++) {
+            for (int j = 0; j < bodies.length; j++) {
+                if (i != j) {
+                    bodies[i].getAffectedBy(bodies[j], timeStep);
+                }
+            }
+        }
+        for (int i = 0; i < bodies.length; i++) {
+            bodies[i].move(timeStep);
+        }
     }
-    
-    
 }
