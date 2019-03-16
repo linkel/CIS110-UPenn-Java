@@ -48,7 +48,7 @@ public class Body {
      */
     public double distanceToX(Body other) {
         //TODO: Implement this method
-        return other.px - this.px;
+        return other.px - px;
     }
     
     
@@ -58,7 +58,7 @@ public class Body {
      */
     public double distanceToY(Body other) {
         //TODO: Implement this method
-        return other.py - this.py;
+        return other.py - py;
     }
     
     /**
@@ -68,8 +68,8 @@ public class Body {
      */
     public double distanceTo(Body other) {
         //TODO: Implement this method  
-        double deltaX = other.px - this.px;
-        double deltaY = other.py - this.py;
+        double deltaX = other.px - px;
+        double deltaY = other.py - py;
         return Math.sqrt(deltaX*deltaX + deltaY*deltaY);
     }
     /**
@@ -80,7 +80,7 @@ public class Body {
     public double force(Body other) {
         //TODO: Implement this method
         double d = distanceTo(other);
-        return (G*this.m*other.m)/(d*d);
+        return (G*m*other.m)/(d*d);
     }
     
     /**
@@ -107,7 +107,7 @@ public class Body {
      */
     public void draw() {
         //TODO: Implement this method
-        PennDraw.picture(this.px,this.py,this.img);
+        PennDraw.picture(px,py,img);
     }
     
     /**
@@ -118,8 +118,8 @@ public class Body {
     public void move(double timeStep) {
         //TODO: Implement this method
         // (px + Δt vx, py + Δt vy)
-        this.px = this.px + timeStep * this.vx;
-        this.py = this.py + timeStep * this.vy;
+        px = px + timeStep * vx;
+        py = py + timeStep * vy;
     }
     
     /**
@@ -132,7 +132,7 @@ public class Body {
     public void getAffectedBy(Body other, double timeStep) {
         //vx + Δt ax, vy + Δt ay)
         //TODO: Implement this method
-        this.vx = this.vx + timeStep*(this.forceX(other)/other.m);
-        this.vy = this.vy + timeStep*(this.forceY(other)/other.m);
+        vx = vx + timeStep*(forceX(other)/m);
+        vy = vy + timeStep*(forceY(other)/m);
     }    
 }

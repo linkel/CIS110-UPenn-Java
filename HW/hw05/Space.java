@@ -1,8 +1,4 @@
 public class Space {
-    public static void main(String[] args) {
-        Space s = new Space("solarSystem.txt");
-        s.draw();
-    }
     /**
      * DO NOT EDIT ANY CODE BELOW THIS LINE
      * 
