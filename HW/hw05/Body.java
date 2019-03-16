@@ -107,6 +107,7 @@ public class Body {
      */
     public void draw() {
         //TODO: Implement this method
+        PennDraw.picture(this.px,this.py,this.img);
     }
     
     /**
@@ -116,6 +117,9 @@ public class Body {
      */
     public void move(double timeStep) {
         //TODO: Implement this method
+        // (px + Δt vx, py + Δt vy)
+        this.px = this.px + timeStep * this.vx;
+        this.py = this.py + timeStep * this.vy;
     }
     
     /**
@@ -126,6 +130,9 @@ public class Body {
      *          timeStep - the time to simulate the acceleration.
      */
     public void getAffectedBy(Body other, double timeStep) {
+        //vx + Δt ax, vy + Δt ay)
         //TODO: Implement this method
+        this.vx = this.vx + timeStep*(this.forceX(other)/other.m);
+        this.vy = this.vy + timeStep*(this.forceY(other)/other.m);
     }    
 }
