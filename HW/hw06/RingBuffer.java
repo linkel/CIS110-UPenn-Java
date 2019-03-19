@@ -1,4 +1,17 @@
 // TODO: FILE HEADER
+/* RingBuffer will implement the following: 
+
+public class RingBuffer
+-----------------------------------------------------------------------------------------
+RingBuffer(int capacity)  // create an empty ring buffer, with given max capacity
+int currentSize()         // return number of items currently in the buffer
+boolean isEmpty()         // is the buffer empty?
+boolean isFull()          // is the buffer full?
+void enqueue(double x)    // add item x to the end
+double dequeue()          // delete and return item from the front
+double peek()             // return (but do not delete) item from the front
+
+*/
 
 public class RingBuffer {
     private double[] bufferArray; // items in the buffer
