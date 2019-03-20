@@ -21,28 +21,23 @@ public class RingBuffer {
 
     // create an empty buffer, with given max capacity
     public RingBuffer(int capacity) {
-        // TODO: YOUR CODE HERE
+        bufferArray = new double[capacity];
+        currentSize = 0;
     }
 
     // return number of items currently in the buffer
     public int currentSize() {
-        // TODO: YOUR CODE HERE
-
-        return 0; // dummy return statement so the code compiles
+        return currentSize;
     }
 
     // is the buffer empty (size equals zero)?
     public boolean isEmpty() {
-        // TODO: YOUR CODE HERE
-
-        return false; // dummy return statement so the code compiles
+        return currentSize == 0;
     }
 
     // is the buffer full (size equals array capacity)?
     public boolean isFull() {
-        // TODO: YOUR CODE HERE
-
-        return false; // dummy return statement so the code compiles
+        return currentSize == bufferArray.length;
     }
 
     // add item x to the end
@@ -51,7 +46,13 @@ public class RingBuffer {
             throw new RuntimeException("ERROR: Attempting to enqueue " +
                                        "to a full buffer.");
         }
-        // TODO: YOUR CODE HERE
+        bufferArray[last] = x;
+        if (last == bufferArray.length) {
+            last = 0;
+        } else {
+            last = last + 1;
+        }
+        currentSize += 1;
     }
 
     // delete and return item from the front
@@ -60,9 +61,9 @@ public class RingBuffer {
             throw new RuntimeException("ERROR: Attempting to dequeue " +
                                        "from an empty buffer.");
         }
-        // TODO: YOUR CODE HERE
-
-        return 0.0; // dummy return statement so the code compiles
+        item = bufferArray[first];
+        first += 1;
+        return item;
     }
 
     // return (but do not delete) item from the front
@@ -71,9 +72,7 @@ public class RingBuffer {
             throw new RuntimeException("ERROR: Attempting to peek " +
                                        "at an empty buffer.");
         }
-        // TODO: YOUR CODE HERE
-
-        return 0.0; // dummy return statement so the code compiles
+        return bufferArray[first];
     }
 
     // print the contents of the RingBuffer object for debugging
