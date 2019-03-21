@@ -61,8 +61,14 @@ public class RingBuffer {
             throw new RuntimeException("ERROR: Attempting to dequeue " +
                                        "from an empty buffer.");
         }
-        item = bufferArray[first];
-        first += 1;
+        double item = bufferArray[first];
+        bufferArray[first] = 0.0;
+        if (first == bufferArray.length) {
+            first = 0;
+        } else {
+            first += 1;
+        }
+        currentSize -= 1;
         return item;
     }
 
@@ -104,6 +110,12 @@ public class RingBuffer {
         RingBuffer buffer = new RingBuffer(bufferSize);
 
         // TODO: YOUR CODE TO TEST buffer HERE
+        buffer.enqueue(0.2);
+        buffer.enqueue(0.3);
+        buffer.enqueue(0.4);
+        buffer.dequeue();
+        buffer.dequeue();
+        buffer.dequeue();
 
         buffer.printBufferContents();
     }
