@@ -18,13 +18,18 @@ public class RingBuffer {
     private int first;            // index for the next dequeue or peek
     private int last;             // index for the next enqueue
     private int currentSize;      // number of items in the buffer
+    private int maxSize;
 
     // create an empty buffer, with given max capacity
     public RingBuffer(int capacity) {
         bufferArray = new double[capacity];
         currentSize = 0;
+        maxSize = capacity;
     }
 
+    public int maxSize() {
+        return maxSize;
+    }
     // return number of items currently in the buffer
     public int currentSize() {
         return currentSize;

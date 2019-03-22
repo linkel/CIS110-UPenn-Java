@@ -4,34 +4,45 @@ public class HarpString {
 
     private RingBuffer buffer; // ring buffer
     // TODO: YOUR OTHER INSTANCE VARIABLES HERE (IF ANY)
-
+    public static double FREQ = 44100;
+    public static double ENERGY_DECAY = -0.997;
+    public int timesCalled = 0;
     // create a harp string of the given frequency
     public HarpString(double frequency) {
-        // TODO: YOUR CODE HERE
+        int numSamples = (int) Math.ceil(frequency / FREQ);
+        buffer = new RingBuffer(numSamples);
+        for (int i = 0; i<buffer.maxSize(); i++) {
+            buffer.enqueue(0.0);
+        }
     }
 
     // pluck the harp string by replacing the buffer with white noise
     public void pluck() {
-        // TODO: YOUR CODE HERE
+        while (!buffer.isEmpty()) {
+            buffer.dequeue();
+        }
+        for (int i = 0; i<buffer.maxSize(); i++) {
+            buffer.enqueue(Math.random() - 0.5);
+        }
+        timesCalled = 0;
     }
 
     // advance the simulation one time step
     public void tic() {
-        // TODO: YOUR CODE HERE
+        double average = buffer.dequeue() + buffer.peek() / 2.0;
+        double decayVal = average * ENERGY_DECAY;
+        buffer.enqueue(decayVal);
+        timesCalled += 1;
     }
 
     // return the current sample
     public double sample() {
-        // TODO: YOUR CODE HERE
-
-        return 0.0; // dummy return statement so the code compiles
+        return buffer.peek();
     }
 
     // return number of times tic was called
     public int time() {
-        // TODO: YOUR CODE HERE
-
-        return 0; // dummy return statement so the code compiles
+        return timesCalled;
     }
 
     // TODO: ADD MORE THOROUGH TESTING
