@@ -31,9 +31,10 @@ public class HarpString {
 
     // advance the simulation one time step
     public void tic() {
-        double average = buffer.dequeue() + buffer.peek() / 2.0;
-        double decayVal = average * ENERGY_DECAY;
-        buffer.enqueue(decayVal);
+        double firstValue = buffer.dequeue();
+        double secondValue = buffer.peek();
+        double calc = ENERGY_DECAY * (0.5 * (firstValue + secondValue));
+        buffer.enqueue(calc);
         timesCalled += 1;
     }
 
