@@ -10,6 +10,8 @@
 //        void insertNearest(Point p)     // insert p using the nearest neighbor heuristic
 //        void insertSmallest(Point p)    // insert p using the smallest increase heuristic
 
+import java.awt.*;
+
 public class Tour implements TourInterface {
     public Node head;
     public Node lastNode;
@@ -33,7 +35,22 @@ public class Tour implements TourInterface {
         return res;
     }
     public void draw(Point p) {
-        PennDraw.clear();
+        if (this.head == null) {
+            return;
+        }
+        Node ptr = this.head;
+        while (ptr != null) {
+            if (ptr.point == p || (ptr.next != null && ptr.next.point == p)) {
+                PennDraw.setPenColor(Color.red);
+                ptr.point.drawTo(ptr.next.point);
+            } else {
+                PennDraw.setPenColor(Color.black);
+                if (ptr.next != null) {
+                    ptr.point.drawTo(ptr.next.point);
+                }
+            }
+            ptr = ptr.next;
+        }
     }
     public int size() {
         int count = 0;
@@ -96,5 +113,6 @@ public class Tour implements TourInterface {
         System.out.println(newTour.toString());
         System.out.println(newTour.size());
         System.out.println(newTour.distance());
+        newTour.draw(d);
     }
 }
