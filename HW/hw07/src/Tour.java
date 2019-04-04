@@ -121,7 +121,25 @@ public class Tour implements TourInterface {
     }
 
     public void insertSmallest(Point p) {
-
+        double lowestIncrementalDistance = Double.POSITIVE_INFINITY;
+        Node saveThisNode = null;
+        if (this.head == null) {
+            this.lastNode = new Node(p);
+            this.head = new Node(this.lastNode, p);
+        } else {
+            Node ptr = this.head;
+            while(ptr != null && ptr.next != null) {
+                double incremental = ptr.point.distanceTo(p) + ptr.next.point.distanceTo(p) - ptr.point.distanceTo(ptr.next.point);
+                if (incremental < lowestIncrementalDistance) {
+                    lowestIncrementalDistance = incremental;
+                    saveThisNode =ptr;
+                }
+                ptr = ptr.next;
+            }
+            Node newNode = new Node(p);
+            newNode.next = saveThisNode.next;
+            saveThisNode.next = newNode;
+        }
     }
     public static void main(String[] args) {
         Tour newTour = new Tour();
