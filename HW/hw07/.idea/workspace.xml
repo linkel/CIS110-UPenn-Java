@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a42b8f3d-b8f6-406d-b1b7-67642f9ac36c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Tour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tour.java" afterDir="false" />
-    </list>
+    <list default="true" id="a42b8f3d-b8f6-406d-b1b7-67642f9ac36c" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,8 +25,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/Point.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="208">
-                  <caret line="64" column="5" lean-forward="true" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
+                <state relative-caret-position="13">
+                  <caret line="49" selection-start-line="49" selection-end-line="64" selection-end-column="5" />
                   <folding>
                     <element signature="e#1433#1434#0" expanded="true" />
                     <element signature="e#1478#1479#0" expanded="true" />
@@ -133,7 +131,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554353044772" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554528700472" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -191,16 +189,15 @@
       <option name="presentableId" value="Default" />
       <updated>1553575647644</updated>
       <workItem from="1553575650701" duration="1961000" />
-      <workItem from="1553972765519" duration="16891000" />
+      <workItem from="1553972765519" duration="17572000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18852000" />
+    <option name="totallyTimeSpent" value="19533000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-4" width="1920" height="1084" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.101387404" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -293,8 +290,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Point.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="64" column="5" lean-forward="true" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
+        <state relative-caret-position="13">
+          <caret line="49" selection-start-line="49" selection-end-line="64" selection-end-column="5" />
           <folding>
             <element signature="e#1433#1434#0" expanded="true" />
             <element signature="e#1478#1479#0" expanded="true" />
