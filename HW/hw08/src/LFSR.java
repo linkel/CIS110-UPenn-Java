@@ -6,6 +6,8 @@
 //public int    getTapPosition()                       // return the tap position
 //public int    nextBit()                              // return a random bit and update the LFSR
 
+//import java.util.Arrays;
+
 public class LFSR {
     public String seed;
     public int tapPosition;
@@ -22,6 +24,7 @@ public class LFSR {
             }
             shiftRegister[shiftRegister.length - 1 - i] = seed.charAt(i) - '0';
         }
+        //System.out.println(Arrays.toString(shiftRegister));
         this.seed = seed;
         if (tapPosition > 0 && tapPosition <= seed.length() - 1) {
             this.tapPosition = tapPosition;
@@ -54,7 +57,7 @@ public class LFSR {
 
     public String toString() {
         String holder = "";
-        for (int i = shiftRegister.length - 1; i > 0; i--) {
+        for (int i = shiftRegister.length - 1; i >= 0; i--) {
             holder += (char) (shiftRegister[i] + '0');
         }
         return holder;
@@ -66,7 +69,7 @@ public class LFSR {
 
     public int nextBit() {
         int next = shiftRegister[shiftRegister.length-1] ^ shiftRegister[tapPosition];
-        for (int i = shiftRegister.length - 1; i > 1; i--) {
+        for (int i = shiftRegister.length - 1; i > 0; i--) {
             shiftRegister[i] = shiftRegister[i-1];
         }
         shiftRegister[0] = next;
@@ -74,6 +77,7 @@ public class LFSR {
     }
     public static void main(String[] args) {
         LFSR lfsr = new LFSR("01101000010", 8);
+        //LFSR lfsr = new LFSR("0100", 2);
         for (int i = 0; i < 10; i++) {
             int bit = lfsr.nextBit();
             System.out.println(lfsr.toString() + " " + bit);
