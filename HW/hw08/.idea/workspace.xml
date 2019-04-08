@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7f8042c7-1e4a-4fa4-b207-990a7dc5b9d5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../hw07/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../hw07/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LFSR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LFSR.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,13 +13,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/LFSR.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="160">
-              <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+              <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="26" />
               <folding>
                 <element signature="e#2374#2375#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Codec.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="521">
+              <caret line="39" column="53" selection-start-line="39" selection-start-column="53" selection-end-line="39" selection-end-column="53" />
+              <folding>
+                <element signature="e#1109#1110#0" expanded="true" />
+                <element signature="e#1175#1176#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -42,6 +54,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/LFSR.java" />
+        <option value="$PROJECT_DIR$/src/Codec.java" />
       </list>
     </option>
   </component>
@@ -71,6 +84,11 @@
               <item name="hw08" type="462c0819:PsiDirectoryNode" />
               <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="hw08" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hw08" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -82,7 +100,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554680326839" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554683575351" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -101,7 +119,14 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Codec">
+    <configuration name="Codec" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Codec" />
+      <module name="hw08" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="LFSR" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="LFSR" />
       <module name="hw08" />
@@ -111,6 +136,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Codec" />
         <item itemvalue="Application.LFSR" />
       </list>
     </recent_temporary>
@@ -126,12 +152,12 @@
       <option name="presentableId" value="Default" />
       <updated>1554588873964</updated>
       <workItem from="1554588886457" duration="3226000" />
-      <workItem from="1554592138601" duration="4851000" />
+      <workItem from="1554592138601" duration="7322000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8077000" />
+    <option name="totallyTimeSpent" value="10548000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-4" width="1920" height="1084" extended-state="6" />
@@ -201,9 +227,20 @@
     <entry file="file://$PROJECT_DIR$/src/LFSR.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
-          <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+          <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="26" />
           <folding>
             <element signature="e#2374#2375#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Codec.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="521">
+          <caret line="39" column="53" selection-start-line="39" selection-start-column="53" selection-end-line="39" selection-end-column="53" />
+          <folding>
+            <element signature="e#1109#1110#0" expanded="true" />
+            <element signature="e#1175#1176#0" expanded="true" />
           </folding>
         </state>
       </provider>
