@@ -36,7 +36,40 @@ public class Codec {
         }
         return conversion;
     }
+
+    public static String decode(int[] bits) {
+        String res = "";
+        if (bits == null) {
+            return null;
+        }
+        if (bits.length % 7 != 0) {
+            throw new RuntimeException("Not a multiple of 7!");
+        }
+        int[] seven = new int[7];
+        int bits_ptr = 0;
+        while (bits_ptr < bits.length) {
+            for (int i = 0; i < 7; i++) {
+                seven[i] = bits[bits_ptr];
+                bits_ptr++;
+            }
+            char unicode = decodeHelper(seven);
+            res += unicode;
+        }
+        return res;
+    }
+
+    private static char decodeHelper(int[] bits) {
+        int unicode = 0;
+        for (int i=0; i< 7; i++) {
+            unicode += bits[6 - i] * Math.pow(2, i);
+        }
+        return (char) unicode;
+    }
+
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(encode("CD")));
+        //System.out.println(Arrays.toString(encode("CD")));
+        //System.out.println(decode(encode("See the truth gently")));
+        int[] tester = new int[] {1,0,0,0,0,0,0};
+        System.out.println(decode(tester));
     }
 }
