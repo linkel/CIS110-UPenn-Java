@@ -66,10 +66,29 @@ public class Codec {
         return (char) unicode;
     }
 
+    public static void encrypt(int[] message, String seed, int tapPosition) {
+        LFSR maker = new LFSR(seed, tapPosition);
+        int ptr = 0;
+        while (ptr < message.length) {
+            message[ptr] = message[ptr] ^ maker.nextBit();
+            ptr++;
+        }
+    }
+
+    public static void decrypt(int[] cipher, String seed, int tapPosition) {
+        encrypt(cipher, seed, tapPosition);
+    }
+
     public static void main(String[] args) {
         //System.out.println(Arrays.toString(encode("CD")));
         //System.out.println(decode(encode("See the truth gently")));
         int[] tester = new int[] {1,0,0,0,0,0,0};
         System.out.println(decode(tester));
+        int[] encoded = encode("help");
+        System.out.println(Arrays.toString(encoded));
+        encrypt(encoded, "01101000010", 8);
+        System.out.println(Arrays.toString(encoded));
+        decrypt(encoded, "01101000010", 8);
+        System.out.println(Arrays.toString(encoded));
     }
 }
