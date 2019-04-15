@@ -8,6 +8,11 @@ public class RetrieveMessage {
         }
 
         int[][] image = ImageData.load(args[0]);
+
+        if (image.length == 0) {
+            throw new ArrayIndexOutOfBoundsException("Array Index Out of Bounds for your filename argument. Is the filename correct? Can't seem to find it.");
+        }
+
         int image_size = image.length * image[0].length;
         image_size = image_size - (image_size % 7);
         int[] message = new int[image_size];
