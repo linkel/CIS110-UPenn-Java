@@ -1,10 +1,11 @@
 package com.company;
+import java.util.Random;
 
 public class Board {
-    public String[][] board = { {" ", " ", " ", " "},
-                                {" ", " ", " ", " "},
-                                {" ", " ", " ", " "},
-                                {" ", " ", " ", " "}, };
+    public String[][] board = {{" ", " ", " ", " "},
+            {" ", " ", " ", " "},
+            {" ", " ", " ", " "},
+            {" ", " ", " ", " "},};
 
     public void drawBoard() {
         System.out.println(" _____ _____ _____ _____");
@@ -23,39 +24,41 @@ public class Board {
         System.out.println("|     |     |     |     |");
         System.out.format("|  %s  |  %s  |  %s  |  %s  |", board[3][0], board[3][1], board[3][2], board[3][3]);
         System.out.println(" ");
-        System.out.println(" _____ _____ _____ _____");
+        System.out.println("|_____|_____|_____|_____|");
     }
 
     public boolean spawnNumber() {
         boolean added = false;
         boolean stillSpace = true;
-        while (added == false) {
-            for (int i = 0; i < 4; i++) {
-                for (int j = 0; j < 4; j++) {
-                    if (!added && board[i][j].equals(" ") && Math.random() > 0.7) {
-                        board[i][j] = "2";
-                        added = true;
-                        break;
-                    } else if (!added && board[i][j].equals(" ") && Math.random() < 0.2) {
-                        board[i][j] = "4";
-                        added = true;
-                        break;
-                    }
-                }
+        Random generator = new Random();
+        while (!added) {
+            int randomI = generator.nextInt(board.length);
+            int randomJ = generator.nextInt(board[0].length);
+            int twoOrFour = generator.nextInt(10);
+            if (board[randomI][randomJ].equals(" ") && twoOrFour > 3) {
+                board[randomI][randomJ] = "2";
+                added = true;
+            } else if (board[randomI][randomJ].equals(" ") && twoOrFour <= 3) {
+                board[randomI][randomJ] = "4";
+                added = true;
             }
-            stillSpace = false;
-            for (int i = 0; i < 4; i++) {
-                for (int j = 0; j < 4; j++) {
-                    if (board[i][j].equals(" ")) {
-                        stillSpace = true;
-                    }
-                }
-            }
-            if (stillSpace == false) {
+            if (!openSpacesLeft()) {
                 System.out.println("Board is full! You lose!");
                 return false;
             }
         }
         return true;
+    }
+
+    private boolean openSpacesLeft() {
+        boolean stillSpace = false;
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (board[i][j].equals(" ")) {
+                    stillSpace = true;
+                }
+            }
+        }
+        return stillSpace;
     }
 }
