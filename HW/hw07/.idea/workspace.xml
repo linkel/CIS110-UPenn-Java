@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a42b8f3d-b8f6-406d-b1b7-67642f9ac36c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../hw09/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../hw09/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hw09/src/com/company/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/../hw09/src/com/company/Board.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -72,7 +71,7 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/Tour.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="146">
+                <state relative-caret-position="210">
                   <caret line="24" column="30" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
                 </state>
               </provider>
@@ -116,10 +115,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="512" />
-    <option name="y" value="205" />
-    <option name="width" value="1010" />
-    <option name="height" value="1020" />
+    <option name="x" value="960" />
+    <option name="y" value="24" />
+    <option name="width" value="960" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -212,12 +211,12 @@
       <workItem from="1553575650701" duration="1961000" />
       <workItem from="1553972765519" duration="22802000" />
       <workItem from="1554957371569" duration="1610000" />
-      <workItem from="1555476377986" duration="1936000" />
+      <workItem from="1555476377986" duration="3133000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28309000" />
+    <option name="totallyTimeSpent" value="29506000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-4" width="1920" height="1084" extended-state="6" />
@@ -300,7 +299,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tour.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
+        <state relative-caret-position="210">
           <caret line="24" column="30" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
         </state>
       </provider>
