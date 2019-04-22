@@ -8,6 +8,8 @@ In my sketch out, I just want a loop that collects user input and updates the bo
 
 - [x] Simple while loop for collecting user input and running the game loop
 - [x] Have a 2D array storing the numbers as strings
+- [x] Implement a JFrame for capturing user input instead of command line, since the terminal can't seem to collect user input without also requiring an enter key press
+- [ ] Figure out how to draw grids and numbers on the JFrame
 - [ ] Tight feedback loop from entering a keyboard character and seeing board update
 - [ ] Read one character from user and update the board consequently (right now it seems to read more than one character)
 

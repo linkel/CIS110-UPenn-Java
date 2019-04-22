@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JFrame;
+import java.awt.Font;
 
 public class GameFrame extends JFrame implements KeyListener {
 
@@ -29,6 +30,39 @@ public class GameFrame extends JFrame implements KeyListener {
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
+    }
+
+    public void paint(Graphics g) {
+        super.paint(g);
+
+        drawSquare(g, 50, 50, 100, 100);
+        drawSquare(g, 185, 50, 100, 100);
+        drawSquare(g, 315, 50, 100, 100);
+        drawSquare(g, 450, 50, 100, 100);
+        drawSquare(g, 50, 180, 100, 100);
+        drawSquare(g, 185, 180, 100, 100);
+        drawSquare(g, 315, 180, 100, 100);
+        drawSquare(g, 450, 180, 100, 100);
+        drawSquare(g, 50, 310, 100, 100);
+        drawSquare(g, 185, 310, 100, 100);
+        drawSquare(g, 315, 310, 100, 100);
+        drawSquare(g, 450, 310, 100, 100);
+        drawSquare(g, 50, 440, 100, 100);
+        drawSquare(g, 185, 440, 100, 100);
+        drawSquare(g, 315, 440, 100, 100);
+        drawSquare(g, 450, 440, 100, 100);
+
+        Font currentFont = g.getFont();
+        Font biggerFont = currentFont.deriveFont(70F);
+        g.setFont(biggerFont);
+        g.drawString("4", 80, 120);
+    }
+
+    public void drawSquare(Graphics g, int i, int i1, int i2, int i3) {
+        g.drawRect(i, i1, i2, i3);
+        g.setColor(Color.yellow);
+        g.fillRect(i, i1, i2, i3);
+        g.setColor(Color.black);
     }
 
     public static void main(String[] args) {
