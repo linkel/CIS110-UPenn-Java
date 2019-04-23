@@ -55,7 +55,23 @@ public class GameFrame extends JFrame implements KeyListener {
         Font currentFont = g.getFont();
         Font biggerFont = currentFont.deriveFont(70F);
         g.setFont(biggerFont);
-        g.drawString("4", 80, 120);
+        g.drawString("4", 77, 125);
+        g.drawString("4", 212, 125);
+        g.drawString("4", 342, 125);
+        g.drawString("4", 477, 125);
+        g.drawString("4", 77, 255);
+        g.drawString("4", 212, 255);
+        g.drawString("4", 342, 255);
+        g.drawString("4", 477, 255);
+        g.drawString("4", 77, 385);
+        g.drawString("4", 212, 385);
+        g.drawString("4", 342, 385);
+        g.drawString("4", 477, 385);
+        g.drawString("4", 77, 515);
+        g.drawString("4", 212, 515);
+        g.drawString("4", 342, 515);
+        g.drawString("4", 477, 515);
+
     }
 
     public void drawSquare(Graphics g, int i, int i1, int i2, int i3) {
