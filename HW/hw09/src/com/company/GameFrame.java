@@ -4,8 +4,58 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import java.awt.Font;
+import java.util.Random;
 
 public class GameFrame extends JFrame implements KeyListener {
+
+    public String[][] board = new String[][]{{" ", " ", " ", " "}, {" ", " ", " ", " "}, {" ", " ", " ", " "}, {" ", " ", " ", " "}};
+
+    public Point[][] locations = new Point[][] {{new Point(77,125), new Point(212, 125), new Point(342, 125), new Point(477, 125)},
+            {new Point(77,255), new Point(212, 255), new Point(342, 255), new Point(477, 255)},
+            {new Point(77,385), new Point(212, 385), new Point(342, 385), new Point(477, 385)},
+            {new Point(77,515), new Point(212, 515), new Point(342, 515), new Point(477, 515)}};
+
+    public void initializeBoard() {
+        spawnNumber(2);
+    }
+
+    public boolean spawnNumber(int limit) {
+        int added = 0;
+        boolean stillSpace = true;
+        Random generator = new Random();
+        while (added < limit) {
+            int randomI = generator.nextInt(board.length);
+            int randomJ = generator.nextInt(board[0].length);
+            int twoOrFour = generator.nextInt(10);
+            if (board[randomI][randomJ].equals(" ") && twoOrFour > 3) {
+                board[randomI][randomJ] = "2";
+                added += 1;
+            } else if (board[randomI][randomJ].equals(" ") && twoOrFour <= 3) {
+                board[randomI][randomJ] = "4";
+                added += 1;
+            }
+            if (!openSpacesLeft()) {
+                System.out.println("Board is full! You lose!");
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean openSpacesLeft() {
+        boolean stillSpace = false;
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (board[i][j].equals(" ")) {
+                    stillSpace = true;
+                }
+            }
+        }
+        return stillSpace;
+    }
+
+    public void repaintBoard()
+
 
     public void keyPressed(KeyEvent e) {
         //System.out.println("you pressed a key");
@@ -71,8 +121,9 @@ public class GameFrame extends JFrame implements KeyListener {
         g.drawString("4", 212, 515);
         g.drawString("4", 342, 515);
         g.drawString("4", 477, 515);
-
     }
+
+
 
     public void drawSquare(Graphics g, int i, int i1, int i2, int i3) {
         g.drawRect(i, i1, i2, i3);

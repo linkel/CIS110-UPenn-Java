@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a42b8f3d-b8f6-406d-b1b7-67642f9ac36c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../hw09/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../hw09/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hw09/out/production/hw09/com/company/GameFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../hw09/out/production/hw09/com/company/GameFrame$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hw09/out/production/hw09/com/company/GameFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/../hw09/out/production/hw09/com/company/GameFrame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../hw09/src/com/company/GameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/../hw09/src/com/company/GameFrame.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -119,9 +116,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="960" />
+    <option name="x" value="745" />
     <option name="y" value="24" />
-    <option name="width" value="960" />
+    <option name="width" value="1175" />
     <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
