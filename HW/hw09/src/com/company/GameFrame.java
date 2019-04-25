@@ -15,13 +15,17 @@ public class GameFrame extends JFrame implements KeyListener {
             {new Point(77,385), new Point(212, 385), new Point(342, 385), new Point(477, 385)},
             {new Point(77,515), new Point(212, 515), new Point(342, 515), new Point(477, 515)}};
 
-    public void initializeBoard() {
-        spawnNumber(2);
+
+    public void drawBoard(Graphics g) {
+        for (int i = 0; i < board.length; i++) {
+            for (int j=0; j < board[0].length; j++) {
+                g.drawString(board[i][j],(int)locations[i][j].getX(),(int)locations[i][j].getY());
+            }
+        }
     }
 
     public boolean spawnNumber(int limit) {
         int added = 0;
-        boolean stillSpace = true;
         Random generator = new Random();
         while (added < limit) {
             int randomI = generator.nextInt(board.length);
@@ -54,9 +58,52 @@ public class GameFrame extends JFrame implements KeyListener {
         return stillSpace;
     }
 
-    public void repaintBoard()
+    public boolean isFirstLine(String s, int i, int j) {
+        switch(s) {
+            case "up":
+                if (i == 0) {
+                    return true;
+                }
+                return false;
+            case "left":
+                if (j == 0) {
+                    return true;
+                }
+                return false;
+            case "right":
+                if (j == 3) {
+                    return true;
+                }
+                return false;
+            case "down":
+                if (i == 3) {
+                    return true;
+                }
+                return false;
+            default:
+                System.out.println("Whoa! I messed up and didn't provide a string for the direction.");
+        }
+        return false;
+    }
 
+    public void checkPath(String s, int i, int j) {
 
+    }
+
+    public void moveUp() {
+        for (int i = 0; i < board.length; i++) {
+            for (int j=0; j < board[0].length; j++) {
+                if (board[i][j] != " " && !isFirstLine("up",i,j)) {
+                    int new_i = i - 1;
+                    int new_j = j;
+                    if (board[new_i][new_j] == " ") {
+                        // TODO if it's empty then it's okay to move it up, check another up if it's empty too until you can't anymore and move it, then get rid of the one on this space.
+                        //TODO then next line should check if there's a number that's the same as current, if it is, then double that num and get rid of the one on this space
+                    }
+                }
+            }
+        }
+    }
     public void keyPressed(KeyEvent e) {
         //System.out.println("you pressed a key");
     }
@@ -80,6 +127,7 @@ public class GameFrame extends JFrame implements KeyListener {
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
+        spawnNumber(2);
     }
 
     public void paint(Graphics g) {
@@ -105,25 +153,8 @@ public class GameFrame extends JFrame implements KeyListener {
         Font currentFont = g.getFont();
         Font biggerFont = currentFont.deriveFont(70F);
         g.setFont(biggerFont);
-        g.drawString("4", 77, 125);
-        g.drawString("4", 212, 125);
-        g.drawString("4", 342, 125);
-        g.drawString("4", 477, 125);
-        g.drawString("4", 77, 255);
-        g.drawString("4", 212, 255);
-        g.drawString("4", 342, 255);
-        g.drawString("4", 477, 255);
-        g.drawString("4", 77, 385);
-        g.drawString("4", 212, 385);
-        g.drawString("4", 342, 385);
-        g.drawString("4", 477, 385);
-        g.drawString("4", 77, 515);
-        g.drawString("4", 212, 515);
-        g.drawString("4", 342, 515);
-        g.drawString("4", 477, 515);
+        drawBoard(g);
     }
-
-
 
     public void drawSquare(Graphics g, int i, int i1, int i2, int i3) {
         g.drawRect(i, i1, i2, i3);

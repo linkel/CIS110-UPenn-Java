@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a42b8f3d-b8f6-406d-b1b7-67642f9ac36c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../hw09/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../hw09/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hw09/out/production/hw09/com/company/GameFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../hw09/out/production/hw09/com/company/GameFrame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hw09/out/production/hw09/com/company/GameFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/../hw09/out/production/hw09/com/company/GameFrame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../hw09/src/com/company/GameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/../hw09/src/com/company/GameFrame.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
