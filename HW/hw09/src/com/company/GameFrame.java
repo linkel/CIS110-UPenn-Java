@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import java.awt.Font;
+import java.util.Arrays;
 import java.util.Random;
 
 public class GameFrame extends JFrame implements KeyListener {
@@ -58,7 +59,7 @@ public class GameFrame extends JFrame implements KeyListener {
         return stillSpace;
     }
 
-    public boolean isFirstLine(String s, int i, int j) {
+    public boolean isFirstLine(String s, int i, int j) { // TODO this function can be rolled into the checkPath one
         switch(s) {
             case "up":
                 if (i == 0) {
@@ -86,37 +87,145 @@ public class GameFrame extends JFrame implements KeyListener {
         return false;
     }
 
-    public void checkPath(String s, int i, int j) {
+    public Point checkPath(String s, int i, int j) {
+        String original;
+        int new_i;
+        int new_j;
+        Point potential_space;
+        switch (s) {
+            case "up":
+                original = board[i][j];
+                new_i = i - 1;
+                new_j = j;
+                potential_space = new Point(j, i);
+                while (new_i >= 0) {
+                    if (board[new_i][new_j] == " " || board[new_i][new_j] == original) {
+                        potential_space = new Point(new_j, new_i);
+                    }
+                    new_i--;
+                }
+                return potential_space;
+            case "down":
+                original = board[i][j];
+                new_i = i + 1;
+                new_j = j;
+                potential_space = new Point(j, i);
+                while (new_i < 4) {
+                    if (board[new_i][new_j] == " " || board[new_i][new_j] == original) {
+                        potential_space = new Point(new_j, new_i);
+                    }
+                    new_i++;
+                }
+                return potential_space;
+            case "left":
+                original = board[i][j];
+                new_i = i;
+                new_j = j - 1;
+                potential_space = new Point(j, i);
+                while (new_j >= 0) {
+                    if (board[new_i][new_j] == " " || board[new_i][new_j] == original) {
+                        potential_space = new Point(new_j, new_i);
+                    }
+                    new_j--;
+                }
+                return potential_space;
+            case "right":
+                original = board[i][j];
+                new_i = i;
+                new_j = j + 1;
+                potential_space = new Point(j, i);
+                while (new_j < 4) {
+                    if (board[new_i][new_j] == " " || board[new_i][new_j] == original) {
+                        potential_space = new Point(new_j, new_i);
+                    }
+                    new_j++;
+                }
+                return potential_space;
+        }
+        potential_space = new Point(9,9); // TODO please throw an exception here or something
+        return potential_space;
+    }
 
+    public String checkResult(Point location, String originalValue) {
+        if (board[(int) location.getY()][(int) location.getX()] == originalValue) {
+            return String.valueOf(Integer.parseInt(originalValue)*2);
+        }
+        return originalValue;
     }
 
     public void moveUp() {
         for (int i = 0; i < board.length; i++) {
             for (int j=0; j < board[0].length; j++) {
-                if (board[i][j] != " " && !isFirstLine("up",i,j)) {
-                    int new_i = i - 1;
-                    int new_j = j;
-                    if (board[new_i][new_j] == " ") {
-                        // TODO if it's empty then it's okay to move it up, check another up if it's empty too until you can't anymore and move it, then get rid of the one on this space.
-                        //TODO then next line should check if there's a number that's the same as current, if it is, then double that num and get rid of the one on this space
-                    }
+                if (board[i][j] != " ") {
+                    Point moveTo = checkPath("up", i, j);
+                    String result = checkResult(moveTo, board[i][j]);
+                    board[(int) moveTo.getY()][(int) moveTo.getX()] = result;
+                    board[i][j] = " ";
                 }
             }
         }
     }
+
+    public void moveDown() {
+        for (int i = 3; i >= 0; i--) {
+            for (int j = 3; j >= 0; j--) {
+                if (board[i][j] != " ") {
+                    Point moveTo = checkPath("down", i, j);
+                    String result = checkResult(moveTo, board[i][j]);
+                    board[(int) moveTo.getY()][(int) moveTo.getX()] = result;
+                    board[i][j] = " ";
+                }
+            }
+        }
+    }
+
+    public void moveLeft() {
+        for (int j = 0; j < board.length; j++) {
+            for (int i=0; i < board[0].length; i++) {
+                if (board[i][j] != " ") {
+                    Point moveTo = checkPath("left", i, j);
+                    String result = checkResult(moveTo, board[i][j]);
+                    board[(int) moveTo.getY()][(int) moveTo.getX()] = result;
+                    board[i][j] = " ";
+                }
+            }
+        }
+    }
+
+    public void moveRight() {
+        for (int j = 3; j >= 0; j--) {
+            for (int i = 0; i < board[0].length; i++) {
+                if (board[i][j] != " ") {
+                    Point moveTo = checkPath("right", i, j);
+                    String result = checkResult(moveTo, board[i][j]);
+                    board[(int) moveTo.getY()][(int) moveTo.getX()] = result;
+                    board[i][j] = " ";
+                }
+            }
+        }
+    }
+
     public void keyPressed(KeyEvent e) {
         //System.out.println("you pressed a key");
     }
 
     public void keyReleased(KeyEvent e) {
-        if(e.getKeyCode()== KeyEvent.VK_W)
-            System.out.println("you pressed W");
-        else if(e.getKeyCode()== KeyEvent.VK_A)
-            System.out.println("you pressed A");
-        else if(e.getKeyCode()== KeyEvent.VK_S)
-            System.out.println("you pressed S");
-        else if(e.getKeyCode()== KeyEvent.VK_D)
-            System.out.println("you pressed D");
+        if(e.getKeyCode()== KeyEvent.VK_W) {
+            moveUp();
+            System.out.println((Arrays.deepToString(board)));
+        }
+        else if(e.getKeyCode()== KeyEvent.VK_A) {
+            moveLeft();
+            System.out.println((Arrays.deepToString(board)));
+        }
+        else if(e.getKeyCode()== KeyEvent.VK_S) {
+            moveDown();
+            System.out.println((Arrays.deepToString(board)));
+        }
+        else if(e.getKeyCode()== KeyEvent.VK_D) {
+            moveRight();
+            System.out.println((Arrays.deepToString(board)));
+        }
     }
 
     public void keyTyped(KeyEvent e) {
