@@ -99,7 +99,7 @@ public class GameFrame extends JFrame implements KeyListener {
                 new_j = j;
                 potential_space = new Point(j, i);
                 while (new_i >= 0) {
-                    if (board[new_i][new_j] == " " || board[new_i][new_j] == original) {
+                    if (board[new_i][new_j] == " " || board[new_i][new_j].equals(original)) {
                         potential_space = new Point(new_j, new_i);
                     }
                     new_i--;
@@ -111,7 +111,7 @@ public class GameFrame extends JFrame implements KeyListener {
                 new_j = j;
                 potential_space = new Point(j, i);
                 while (new_i < 4) {
-                    if (board[new_i][new_j] == " " || board[new_i][new_j] == original) {
+                    if (board[new_i][new_j] == " " || board[new_i][new_j].equals(original)) {
                         potential_space = new Point(new_j, new_i);
                     }
                     new_i++;
@@ -123,7 +123,7 @@ public class GameFrame extends JFrame implements KeyListener {
                 new_j = j - 1;
                 potential_space = new Point(j, i);
                 while (new_j >= 0) {
-                    if (board[new_i][new_j] == " " || board[new_i][new_j] == original) {
+                    if (board[new_i][new_j] == " " || board[new_i][new_j].equals(original)) {
                         potential_space = new Point(new_j, new_i);
                     }
                     new_j--;
@@ -135,7 +135,7 @@ public class GameFrame extends JFrame implements KeyListener {
                 new_j = j + 1;
                 potential_space = new Point(j, i);
                 while (new_j < 4) {
-                    if (board[new_i][new_j] == " " || board[new_i][new_j] == original) {
+                    if (board[new_i][new_j] == " " || board[new_i][new_j].equals(original)) {
                         potential_space = new Point(new_j, new_i);
                     }
                     new_j++;
@@ -147,9 +147,9 @@ public class GameFrame extends JFrame implements KeyListener {
     }
 
     public String checkResult(Point newLocation, String originalValue, Point oldLocation) {
-        if (newLocation.getX() != oldLocation.getX()
-                && newLocation.getY() != newLocation.getY()
-                && board[(int) newLocation.getY()][(int) newLocation.getX()] == originalValue) {
+        if ((newLocation.getX() != oldLocation.getX() || newLocation.getY() != oldLocation.getY())
+                && board[(int) newLocation.getY()][(int) newLocation.getX()].equals(originalValue)) {
+            System.out.println(Integer.parseInt(originalValue)*2);
             return String.valueOf(Integer.parseInt(originalValue)*2);
         }
         return originalValue;
@@ -160,7 +160,7 @@ public class GameFrame extends JFrame implements KeyListener {
             for (int j=0; j < board[0].length; j++) {
                 if (board[i][j] != " ") {
                     Point moveTo = checkPath("up", i, j);
-                    String result = checkResult(moveTo, board[i][j], locations[i][j]);
+                    String result = checkResult(moveTo, board[i][j], new Point(j,i));
                     board[i][j] = " ";
                     board[(int) moveTo.getY()][(int) moveTo.getX()] = result;
 
@@ -176,7 +176,7 @@ public class GameFrame extends JFrame implements KeyListener {
             for (int j = 3; j >= 0; j--) {
                 if (board[i][j] != " ") {
                     Point moveTo = checkPath("down", i, j);
-                    String result = checkResult(moveTo, board[i][j], locations[i][j]);
+                    String result = checkResult(moveTo, board[i][j], new Point(j,i));
                     board[i][j] = " ";
                     board[(int) moveTo.getY()][(int) moveTo.getX()] = result;
 
@@ -192,7 +192,7 @@ public class GameFrame extends JFrame implements KeyListener {
             for (int i=0; i < board[0].length; i++) {
                 if (board[i][j] != " ") {
                     Point moveTo = checkPath("left", i, j);
-                    String result = checkResult(moveTo, board[i][j], locations[i][j]);
+                    String result = checkResult(moveTo, board[i][j], new Point(j,i));
                     board[i][j] = " ";
                     board[(int) moveTo.getY()][(int) moveTo.getX()] = result;
 
@@ -208,7 +208,7 @@ public class GameFrame extends JFrame implements KeyListener {
             for (int i = 0; i < board[0].length; i++) {
                 if (board[i][j] != " ") {
                     Point moveTo = checkPath("right", i, j);
-                    String result = checkResult(moveTo, board[i][j], locations[i][j]);
+                    String result = checkResult(moveTo, board[i][j], new Point(j,i));
                     board[i][j] = " ";
                     board[(int) moveTo.getY()][(int) moveTo.getX()] = result;
 

@@ -19,7 +19,7 @@ In my sketch out, I just want a loop that collects user input and updates the bo
 
 - [ ] Improve my Math.Random function for deciding where to spawn numbers (it's a nested lazy mess right now)
 - [x] Implement the calculation for block contact
-- [ ] Bug: Middle blocks will disappear when block they contact isn't the same but there is one the same later in the row that it shouldn't be able to access. Probably my conditional is off.
+- [x] Bug: Middle blocks will disappear when block they contact isn't the same but there is one the same later in the row that it shouldn't be able to access. Probably my conditional is off.
 - [x] Make WASD actually move blocks and combine them in the board array
 - [x] Repaint what is happening to the board array on the screen (Very puzzled on how to do this)
 - [ ] Cover the case of three of same blocks in a row (closer one to the direction gets combined)
