@@ -149,8 +149,11 @@ public class GameFrame extends JFrame implements KeyListener {
     public String checkResult(Point newLocation, String originalValue, Point oldLocation) {
         if ((newLocation.getX() != oldLocation.getX() || newLocation.getY() != oldLocation.getY())
                 && board[(int) newLocation.getY()][(int) newLocation.getX()].equals(originalValue)) {
-            System.out.println(Integer.parseInt(originalValue)*2);
-            return String.valueOf(Integer.parseInt(originalValue)*2);
+            int result = Integer.parseInt(originalValue)*2;
+            if (result == 2048) {
+               System.out.println("You win!");
+            }
+            return String.valueOf(result);
         }
         return originalValue;
     }

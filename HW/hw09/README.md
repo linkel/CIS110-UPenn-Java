@@ -22,6 +22,14 @@ In my sketch out, I just want a loop that collects user input and updates the bo
 - [x] Bug: Middle blocks will disappear when block they contact isn't the same but there is one the same later in the row that it shouldn't be able to access. Probably my conditional is off.
 - [x] Make WASD actually move blocks and combine them in the board array
 - [x] Repaint what is happening to the board array on the screen (Very puzzled on how to do this)
-- [ ] Cover the case of three of same blocks in a row (closer one to the direction gets combined)
-- [ ] Cover the case of four blocks getting combined (they combine to pairs)
-- [ ] Set up winning and losing detection and end screens
+- [x] Cover the case of three of same blocks in a row (closer one to the direction gets combined)
+- [x] Cover the case of four blocks getting combined (they combine to pairs)
+- [x] Set up winning and losing detection
+
+### Endgame To Do
+
+Okay, so technically I have the win and lose conditions set up--it prints the line in console, though. I should draw out a You Win, You Lose on the screen and disable keypresses.
+
+- [ ] Draw a You Win and a You Lose 
+- [ ] Set up display on the screen and repaint
+- [ ] Stop the keypress listening once that happens
